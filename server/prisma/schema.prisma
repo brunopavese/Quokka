@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  userName  String   @unique
+  email     String   @unique
+  avatarUrl String?
+  createdAt DateTime @default(now())
+
+  Messages Message[]
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  text        String
+  messengerId String
+  createdAt   DateTime @default(now())
+
+  messeger User @relation(fields: [messengerId], references: [id])
+}
