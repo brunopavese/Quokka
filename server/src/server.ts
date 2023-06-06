@@ -28,6 +28,12 @@ async function bootstrap() {
     res.json(count);
   });
 
+  app.get('/user', async (req, res) => {
+    const users = await prisma.user.findMany();
+
+    res.json(users);
+  });
+
   app.post('/message', async (req, res) => {
     try {
       const createPostBody = z.object({

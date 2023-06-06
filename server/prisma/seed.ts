@@ -32,24 +32,21 @@ async function main() {
 
   await prisma.message.create({
     data: {
-      text:
-        'Um nome misterioso e poderoso que evoca imagens de um guerreiro furtivo e habilidoso.',
+      text: 'Um nome misterioso e poderoso que evoca imagens de um guerreiro furtivo e habilidoso.',
       messengerId: user.id,
     },
   });
 
   await prisma.message.create({
     data: {
-      text:
-        'Um método de roteamento é derivado a partir de um dos métodos HTTP, e é anexado a uma instância da classe express.',
+      text: 'Um método de roteamento é derivado a partir de um dos métodos HTTP, e é anexado a uma instância da classe express.',
       messengerId: user.id,
     },
   });
 
   await prisma.message.create({
     data: {
-      text:
-        'Este apelido transmite a ideia de um jogador capaz de desencadear tempestades destrutivas e dominar o jogo.',
+      text: 'Este apelido transmite a ideia de um jogador capaz de desencadear tempestades destrutivas e dominar o jogo.',
       messengerId: user1.id,
     },
   });

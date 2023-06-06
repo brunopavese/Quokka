@@ -5,8 +5,8 @@ module.exports = {
   },
   extends: [
     'prettier',
+    'standard',
     'standard-with-typescript',
-    'plugin:react/recommended',
     'plugin:prettier/recommended',
   ],
   parserOptions: {
@@ -17,5 +17,5 @@ module.exports = {
     'prettier/prettier': 'error',
     quotes: ['error', { singleQuote: true }],
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['prettier'],
 };
