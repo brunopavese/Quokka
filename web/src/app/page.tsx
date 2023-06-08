@@ -3,7 +3,7 @@ import { TextInput } from '@/components/TextInput';
 export default async function Home() {
   const data = await getData();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-24 px-4 bg-zinc-800">
+    <main className="flex min-h-screen flex-col items-center justify-between py-20 px-8 md:py-8 bg-zinc-800">
       <h1 className="font-bold text-2xl text-slate-100">Contagem: {data}</h1>
       <div className="rounded-md bg-zinc-700 inline-block whitespace-normal p-4 max-w-2xl">
         <p className="text-slate-100 text-l font-normal">
