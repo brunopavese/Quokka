@@ -12,6 +12,9 @@ module.exports = {
         '33vw': '33vw',
       },
     },
+    minWidth: {
+      40: '10rem',
+    },
   },
   plugins: [],
 };

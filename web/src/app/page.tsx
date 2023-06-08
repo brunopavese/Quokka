@@ -1,3 +1,4 @@
+import { MessageBox } from '@/components/MessageBox';
 import { TextInput } from '@/components/TextInput';
 
 export default async function Home() {
@@ -10,6 +11,7 @@ export default async function Home() {
           Isso é uma mensagem bem maior que a anterior
         </p>
       </div>
+      <MessageBox />
       <TextInput />
     </main>
   );
