@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { PaperPlaneTilt } from '@phosphor-icons/react';
+import { SendButton } from './SendButton';
+import { UnableSendButton } from './UnableSendButton';
 
 export function TextInput() {
   const [inputValue, setInputValue] = useState('');
@@ -42,14 +43,9 @@ export function TextInput() {
         onChange={handleChange}
         maxLength={300}
         placeholder="Digite sua mensagem..."
-        className="bg-zinc-700 max-w-96 sm:w-33vw font-normal p-4 text-l text-slate-100 placeholder-gray-400 rounded-md resize-none focus:outline-none focus:ring-0 overflow-y-hidden whitespace-normal"
+        className="bg-zinc-700 w-80vw sm:w-50vw lg:w-33vw font-normal p-4 text-base text-slate-100 placeholder-gray-400 rounded-md resize-none focus:outline-none focus:ring-0 overflow-y-hidden whitespace-normal"
       />
-      <button
-        type="submit"
-        className="flex p-2 w-14 h-14 justify-center items-center text-3xl font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:bg-orange-600"
-      >
-        <PaperPlaneTilt />
-      </button>
+      {inputValue ? <SendButton /> : <UnableSendButton />}
     </form>
   );
 }

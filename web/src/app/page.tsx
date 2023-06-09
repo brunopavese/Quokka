@@ -1,17 +1,22 @@
 import { MessageBox } from '@/components/MessageBox';
 import { TextInput } from '@/components/TextInput';
+import Link from 'next/link';
 
 export default async function Home() {
   const data = await getData();
   return (
     <main className="flex min-h-screen flex-col items-center justify-between py-20 px-8 md:py-8 bg-zinc-800">
-      <h1 className="font-bold text-2xl text-slate-100">Contagem: {data}</h1>
-      <div className="rounded-md bg-zinc-700 inline-block whitespace-normal p-4 max-w-2xl">
-        <p className="text-slate-100 text-l font-normal">
-          Isso é uma mensagem bem maior que a anterior
-        </p>
-      </div>
-      <MessageBox />
+      <h1 className="font-bold text-2xl text-slate-100">Contagem:{data}</h1>
+      <Link href="/login" className="font-bold text-xl text-slate-100">
+        ir para Login
+      </Link>
+      <MessageBox>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+        aliquam, felis quis consectetur efficitur, ipsum neque tincidunt neque,
+        eget bibendum mi risus in purus. Quisque eget scelerisque nibh. Fusce
+        nec tellus orci. Curabitur a ligula vel ex dapibus scelerisque. Proin
+        sapien ligula eleifend.
+      </MessageBox>
       <TextInput />
     </main>
   );

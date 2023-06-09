@@ -1,6 +1,10 @@
 'use client';
 
-export function MessageBox() {
+interface MessageBoxProps {
+  children: React.ReactNode;
+}
+
+export function MessageBox({ children }: MessageBoxProps) {
   return (
     <div className="flex-col">
       <a
@@ -14,14 +18,8 @@ export function MessageBox() {
         />
         UserName
       </a>
-      <div className="rounded-md bg-zinc-700 inline-block whitespace-normal p-4 max-w-2xl min-w-40">
-        <p className="text-slate-100 text-l font-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          laoreet ligula a convallis iaculis. Aenean arcu lorem, commodo vitae
-          facilisis nec, facilisis ut nulla. Praesent porta rutrum risus, ut
-          consequat massa porta a. Pellentesque dictum fringilla enim et luctus.
-          Class aptent taciti molestie.
-        </p>
+      <div className="rounded-md bg-zinc-700 inline-block whitespace-normal p-4 w-80vw sm:w-50vw lg:w-33vw min-w-40">
+        <p className="text-slate-100 text-base font-normal">{children}</p>
       </div>
     </div>
   );
