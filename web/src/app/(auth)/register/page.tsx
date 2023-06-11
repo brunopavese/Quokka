@@ -1,5 +1,4 @@
-import { SendButton } from '@/components/SendButton';
-import { UnableSendButton } from '@/components/UnableSendButton';
+import SendButton from '@/components/SendButton';
 import { XClose } from '@/components/XClose';
 import Link from 'next/link';
 
@@ -70,7 +69,7 @@ export default async function Register() {
                 </Link>
               </p>
             </div>
-            {false ? <SendButton /> : <UnableSendButton />}
+            <SendButton />
           </div>
         </div>
         <Link href="/">

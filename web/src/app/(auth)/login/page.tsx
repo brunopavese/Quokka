@@ -1,14 +1,46 @@
-import { SendButton } from '@/components/SendButton';
-import { UnableSendButton } from '@/components/UnableSendButton';
+'use client';
+
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { XClose } from '@/components/XClose';
+import SendButton from '@/components/SendButton';
 import Link from 'next/link';
 
-export default async function Login() {
+const signInUserFormSchema = z.object({
+  email: z
+    .string()
+    .nonempty('Email is required')
+    .email('Invalid format')
+    .toLowerCase()
+    .trim(),
+  password: z.string().nonempty('Password is required').min(6, 'Too short'),
+});
+
+type signInUserFormData = z.infer<typeof signInUserFormSchema>;
+
+export default function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<signInUserFormData>({
+    mode: 'onBlur',
+    resolver: zodResolver(signInUserFormSchema),
+  });
+
+  function singInUser(data: any) {
+    console.log(data);
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center py-20 px-8 md:py-8 bg-zinc-800">
       <div className="flex flex-col items-center">
         {/* LOGIN FORMS CONTAINER */}
-        <div className="flex flex-col rounded-md bg-zinc-600 px-4 py-6 w-90vw sm:w-50vw lg:w-30rem justify-center mb-2">
+        <form
+          onSubmit={handleSubmit(singInUser)}
+          className="flex flex-col rounded-md bg-zinc-600 px-4 py-6 w-90vw sm:w-50vw lg:w-30rem justify-center mb-2"
+        >
           <div className="flex flex-col items-center">
             <h1 className="font-medium text-2xl text-slate-100 mb-6 align-baseline">
               Sign in with your account
@@ -16,26 +48,44 @@ export default async function Login() {
           </div>
           {/* Username Input */}
           <div className="flex flex-col">
-            <h2 className="text-zinc-200 font-semibold text-sm mb-2">
-              USERNAME or EMAIL
-            </h2>
-            <input className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0" />
+            <label
+              htmlFor="email"
+              className="text-zinc-200 font-semibold text-sm mb-2"
+            >
+              EMAIL
+            </label>
+            <input
+              {...register('email')}
+              type="email"
+              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
+            />
             <div className="flex h-6 items-center justify-end">
-              <p className="text-xs text-red-400 font-medium">
-                Campo obrigatório
-              </p>
+              {errors.email && (
+                <span className="text-xs text-red-400 font-medium">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
           </div>
           {/* Password Input */}
           <div className="flex flex-col">
-            <h2 className="text-zinc-200 font-semibold text-sm mb-2">
+            <label
+              htmlFor="password"
+              className="text-zinc-200 font-semibold text-sm mb-2"
+            >
               PASSWORD
-            </h2>
-            <input className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0" />
+            </label>
+            <input
+              {...register('password')}
+              type="password"
+              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
+            />
             <div className="flex h-6 items-center justify-end">
-              <p className="text-xs text-red-400 font-medium">
-                Campo obrigatório
-              </p>
+              {errors.password && (
+                <span className="text-xs text-red-400 font-medium">
+                  {errors.password.message}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex flex-row items-center justify-between mt-2">
@@ -50,9 +100,9 @@ export default async function Login() {
                 </Link>
               </p>
             </div>
-            {false ? <SendButton /> : <UnableSendButton />}
+            <SendButton type="submit" isValid={isValid} />
           </div>
-        </div>
+        </form>
         <Link href="/">
           <XClose />
         </Link>

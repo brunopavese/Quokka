@@ -1,12 +1,21 @@
 'use client';
 
+import React, { ButtonHTMLAttributes } from 'react';
 import { PaperPlaneTilt } from '@phosphor-icons/react';
 
-export function SendButton() {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  isValid?: boolean;
+};
+
+export default function SendButton({ isValid = true, ...rest }: ButtonProps) {
   return (
     <button
-      type="submit"
-      className="flex p-2 w-14 h-14 justify-center items-center text-3xl font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600 focus:outline-none focus:bg-orange-600"
+      {...rest}
+      className={`flex p-2 w-14 h-14 justify-center items-center rounded-md text-3xl font-semibold ${
+        isValid
+          ? 'text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:bg-orange-600'
+          : 'text-zinc-500 bg-zinc-700'
+      }`}
     >
       <PaperPlaneTilt />
     </button>

@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { SendButton } from './SendButton';
-import { UnableSendButton } from './UnableSendButton';
+import SendButton from './SendButton';
 
 export function TextInput() {
   const [inputValue, setInputValue] = useState('');
@@ -45,7 +44,7 @@ export function TextInput() {
         placeholder="Digite sua mensagem..."
         className="bg-zinc-700 w-80vw sm:w-50vw lg:w-33vw font-normal p-4 text-base text-slate-100 placeholder-gray-400 rounded-md resize-none focus:outline-none focus:ring-0 overflow-y-hidden whitespace-normal"
       />
-      {inputValue ? <SendButton /> : <UnableSendButton />}
+      <SendButton isValid={inputValue ? true : false} />
     </form>
   );
 }

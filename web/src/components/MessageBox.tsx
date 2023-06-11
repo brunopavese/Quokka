@@ -1,5 +1,3 @@
-'use client';
-
 interface MessageBoxProps {
   children: React.ReactNode;
 }
