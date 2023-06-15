@@ -8,13 +8,8 @@ import SendButton from '@/components/SendButton';
 import Link from 'next/link';
 
 const signInUserFormSchema = z.object({
-  email: z
-    .string()
-    .nonempty('Email is required')
-    .email('Invalid format')
-    .toLowerCase()
-    .trim(),
-  password: z.string().nonempty('Password is required').min(6, 'Too short'),
+  email: z.string().nonempty('Email is required').toLowerCase(),
+  password: z.string().nonempty('Password is required'),
 });
 
 type signInUserFormData = z.infer<typeof signInUserFormSchema>;
@@ -46,7 +41,7 @@ export default function Login() {
               Sign in with your account
             </h1>
           </div>
-          {/* Username Input */}
+          {/* Email Input */}
           <div className="flex flex-col">
             <label
               htmlFor="email"
