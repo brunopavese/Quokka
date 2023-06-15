@@ -1,6 +1,7 @@
-import { MessageBox } from '@/components/MessageBox';
-import { TextInput } from '@/components/TextInput';
 import Link from 'next/link';
+
+import MessageBox from 'components/MessageBox';
+import TextInput from 'components/TextInput';
 
 export default async function Home() {
   const data = await getData();

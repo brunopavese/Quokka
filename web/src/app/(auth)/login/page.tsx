@@ -1,11 +1,13 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { XClose } from '@/components/XClose';
-import SendButton from '@/components/SendButton';
 import Link from 'next/link';
+import { FieldValues, useForm } from 'react-hook-form';
+
+import SendButton from 'components/SendButton';
+import XClose from 'components/XClose';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 const signInUserFormSchema = z.object({
   email: z.string().nonempty('Email is required').toLowerCase(),
@@ -24,7 +26,7 @@ export default function Login() {
     resolver: zodResolver(signInUserFormSchema),
   });
 
-  function singInUser(data: any) {
+  function singInUser(data: FieldValues) {
     console.log(data);
   }
 

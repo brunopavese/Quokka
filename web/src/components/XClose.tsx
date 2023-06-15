@@ -2,7 +2,7 @@
 
 import { X } from '@phosphor-icons/react';
 
-export function XClose() {
+export default function XClose() {
   return (
     <button
       type="submit"

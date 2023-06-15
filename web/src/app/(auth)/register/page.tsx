@@ -1,11 +1,13 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { XClose } from '@/components/XClose';
-import SendButton from '@/components/SendButton';
 import Link from 'next/link';
+import { FieldValues, useForm } from 'react-hook-form';
+
+import SendButton from 'components/SendButton';
+import XClose from 'components/XClose';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 
 const signUpUserFormSchema = z.object({
   username: z
@@ -44,7 +46,7 @@ export default function Register() {
     resolver: zodResolver(signUpUserFormSchema),
   });
 
-  function singUpUser(data: any) {
+  function singUpUser(data: FieldValues) {
     console.log(data);
   }
 

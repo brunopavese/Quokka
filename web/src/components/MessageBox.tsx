@@ -2,7 +2,7 @@ interface MessageBoxProps {
   children: React.ReactNode;
 }
 
-export function MessageBox({ children }: MessageBoxProps) {
+export default function MessageBox({ children }: MessageBoxProps) {
   return (
     <div className="flex-col">
       <a
