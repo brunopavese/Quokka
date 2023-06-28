@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { FieldValues, useForm } from 'react-hook-form';
 
+import InputForm from 'components/InputForm';
 import SendButton from 'components/SendButton';
 import XClose from 'components/XClose';
 
@@ -64,89 +65,36 @@ export default function Register() {
             </h1>
           </div>
           {/* Username Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="username"
-              className="text-zinc-200 font-semibold text-sm mb-2"
-            >
-              USERNAME
-            </label>
-            <input
-              {...register('username')}
-              type="text"
-              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.username && (
-                <span className="text-xs text-red-400 font-medium">
-                  {errors.username.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('username')}
+            name="username"
+            label="USERNAME"
+            errors={errors.username?.message}
+          />
           {/* Email Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="email"
-              className="text-zinc-200 font-semibold text-sm mb-2"
-            >
-              EMAIL
-            </label>
-            <input
-              {...register('email')}
-              type="email"
-              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.email && (
-                <span className="text-xs text-red-400 font-medium">
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('email')}
+            name="email"
+            type="email"
+            label="EMAIL"
+            errors={errors.email?.message}
+          />
           {/* Password Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="text-zinc-200 font-semibold text-sm mb-2"
-            >
-              PASSWORD
-            </label>
-            <input
-              {...register('password')}
-              type="password"
-              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.password && (
-                <span className="text-xs text-red-400 font-medium">
-                  {errors.password.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('password')}
+            name="password"
+            type="password"
+            label="PASSWORD"
+            errors={errors.password?.message}
+          />
           {/* Confirm Password Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="confirmPassword"
-              className="text-zinc-200 font-semibold text-sm mb-2"
-            >
-              CONFIRM PASSWORD
-            </label>
-            <input
-              {...register('confirmPassword')}
-              type="password"
-              className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.confirmPassword && (
-                <span className="text-xs text-red-400 font-medium">
-                  {errors.confirmPassword.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('confirmPassword')}
+            name="confirmPassword"
+            type="password"
+            label="CONFIRM PASSWORD"
+            errors={errors.confirmPassword?.message}
+          />
           <div className="flex flex-row items-center justify-between mt-2">
             <div className="inline-flex flex-row">
               <p className="font-normal text-sm text-slate-100">
