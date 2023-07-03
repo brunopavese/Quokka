@@ -1,14 +1,14 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import MessageBox from 'components/MessageBox';
-import TextInput from 'components/TextInput';
+import MessageBox from 'components/MessageBox'
+import TextInput from 'components/TextInput'
 
 export default async function Home() {
-  const data = await getData();
+  const data = await getData()
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-20 px-8 md:py-8 bg-zinc-800">
-      <h1 className="font-bold text-2xl text-slate-100">Contagem:{data}</h1>
-      <Link href="/login" className="font-bold text-xl text-slate-100">
+    <main className="flex min-h-screen flex-col items-center justify-between bg-zinc-800 px-8 py-20 md:py-8">
+      <h1 className="text-2xl font-bold text-slate-100">Contagem:{data}</h1>
+      <Link href="/login" className="text-xl font-bold text-slate-100">
         ir para Login
       </Link>
       <MessageBox>
@@ -20,7 +20,7 @@ export default async function Home() {
       </MessageBox>
       <TextInput />
     </main>
-  );
+  )
 }
 
 export const getData = async () => {
@@ -28,8 +28,8 @@ export const getData = async () => {
     next: {
       revalidate: 30,
     },
-  });
-  const data = await response.json();
+  })
+  const data = await response.json()
 
-  return data;
-};
+  return data
+}

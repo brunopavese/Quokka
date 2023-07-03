@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react'
 
-import { PaperPlaneTilt } from '@phosphor-icons/react';
+import { PaperPlaneTilt } from '@phosphor-icons/react'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  isValid?: boolean;
-};
+  isValid?: boolean
+}
 
 export default function SendButton({ isValid = true, ...rest }: ButtonProps) {
   return (
     <button
       {...rest}
-      className={`flex p-2 w-14 h-14 justify-center items-center rounded-md text-3xl font-semibold ${
+      className={`flex h-14 w-14 items-center justify-center rounded-md p-2 text-3xl font-semibold ${
         isValid
-          ? 'text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:bg-orange-600'
-          : 'text-zinc-500 bg-zinc-700'
+          ? 'bg-orange-500 text-white hover:bg-orange-600 focus:bg-orange-600 focus:outline-none'
+          : 'bg-zinc-700 text-zinc-500'
       }`}
     >
       <PaperPlaneTilt />
     </button>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import { InputHTMLAttributes, forwardRef, useId } from 'react';
+import { InputHTMLAttributes, forwardRef, useId } from 'react'
 
 type InputFormProps = InputHTMLAttributes<HTMLInputElement> & {
-  label?: string;
-  errors?: string;
-};
+  label?: string
+  errors?: string
+}
 
 const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
   ({ type = 'text', name = '', label = '', errors = '', ...props }, ref) => {
-    const inputId = useId();
-    const hasError = errors.length > 0;
+    const inputId = useId()
+    const hasError = errors.length > 0
     return (
       <div className="flex flex-col">
         <label
           htmlFor={inputId}
-          className="text-zinc-200 font-semibold text-sm mb-2"
+          className="mb-2 text-sm font-semibold text-zinc-200"
         >
           {label}
         </label>
@@ -23,16 +23,16 @@ const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
           name={name}
           {...props}
           ref={ref}
-          className="font-normal px-2 py-3 text-base text-slate-100 rounded-md bg-zinc-700 inline-block max-w-full focus:outline-none focus:ring-0"
+          className="inline-block max-w-full rounded-md bg-zinc-700 px-2 py-3 text-base font-normal text-slate-100 focus:outline-none focus:ring-0"
         />
         <div className="flex h-6 items-center justify-end">
           {hasError && (
-            <span className="text-xs text-red-400 font-medium">{errors}</span>
+            <span className="text-xs font-medium text-red-400">{errors}</span>
           )}
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-export default InputForm;
+export default InputForm
