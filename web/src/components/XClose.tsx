@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { X } from '@phosphor-icons/react';
+import { X } from '@phosphor-icons/react'
 
 export default function XClose() {
   return (
@@ -10,5 +10,5 @@ export default function XClose() {
     >
       <X />
     </button>
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import { InputHTMLAttributes, forwardRef, useId } from 'react';
+import { InputHTMLAttributes, forwardRef, useId } from 'react'
 
 type InputFormProps = InputHTMLAttributes<HTMLInputElement> & {
-  label?: string;
-  errors?: string;
-};
+  label?: string
+  errors?: string
+}
 
 const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
   ({ type = 'text', name = '', label = '', errors = '', ...props }, ref) => {
-    const inputId = useId();
-    const hasError = errors.length > 0;
+    const inputId = useId()
+    const hasError = errors.length > 0
     return (
       <div className="flex flex-col">
         <label
@@ -31,8 +31,8 @@ const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
           )}
         </div>
       </div>
-    );
+    )
   },
-);
+)
 
-export default InputForm;
+export default InputForm

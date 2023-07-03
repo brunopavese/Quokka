@@ -1,23 +1,20 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { FieldValues, useForm } from 'react-hook-form';
+import Link from 'next/link'
+import { FieldValues, useForm } from 'react-hook-form'
 
-import InputForm from 'components/InputForm';
-import SendButton from 'components/SendButton';
-import XClose from 'components/XClose';
+import InputForm from 'components/InputForm'
+import SendButton from 'components/SendButton'
+import XClose from 'components/XClose'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
 const signUpUserFormSchema = z.object({
   username: z
     .string()
     .nonempty('Username is required')
-    .regex(
-      new RegExp(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,300}$/),
-      'Format invalid',
-    )
+    .regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,300}$/, 'Format invalid')
     .min(3, 'Too short')
     .max(30, 'Too long')
     .toLowerCase(),
@@ -30,12 +27,12 @@ const signUpUserFormSchema = z.object({
     .string()
     .nonempty('Password is required')
     .min(6, 'Too short')
-    .regex(new RegExp(/^\S+$/), 'Cannot contain white spaces')
+    .regex(/^\S+$/, 'Cannot contain white spaces')
     .trim(),
   confirmPassword: z.string(),
-});
+})
 
-type signUpUserFormData = z.infer<typeof signUpUserFormSchema>;
+type signUpUserFormData = z.infer<typeof signUpUserFormSchema>
 
 export default function Register() {
   const {
@@ -45,10 +42,10 @@ export default function Register() {
   } = useForm<signUpUserFormData>({
     mode: 'onBlur',
     resolver: zodResolver(signUpUserFormSchema),
-  });
+  })
 
   function singUpUser(data: FieldValues) {
-    console.log(data);
+    console.log(data)
   }
 
   return (
@@ -115,5 +112,5 @@ export default function Register() {
         </Link>
       </div>
     </main>
-  );
+  )
 }

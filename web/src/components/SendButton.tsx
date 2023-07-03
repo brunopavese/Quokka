@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react'
 
-import { PaperPlaneTilt } from '@phosphor-icons/react';
+import { PaperPlaneTilt } from '@phosphor-icons/react'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  isValid?: boolean;
-};
+  isValid?: boolean
+}
 
 export default function SendButton({ isValid = true, ...rest }: ButtonProps) {
   return (
@@ -20,5 +20,5 @@ export default function SendButton({ isValid = true, ...rest }: ButtonProps) {
     >
       <PaperPlaneTilt />
     </button>
-  );
+  )
 }
