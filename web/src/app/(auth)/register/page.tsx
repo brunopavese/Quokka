@@ -49,15 +49,15 @@ export default function Register() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center py-20 px-8 md:py-8 bg-zinc-800">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-800 px-8 py-20 md:py-8">
       <div className="flex flex-col items-center">
         {/* LOGIN FORMS CONTAINER */}
         <form
           onSubmit={handleSubmit(singUpUser)}
-          className="flex flex-col rounded-md bg-zinc-600 px-4 py-6 w-90vw sm:w-50vw lg:w-30rem justify-center mb-2"
+          className="mb-2 flex w-90vw flex-col justify-center rounded-md bg-zinc-600 px-4 py-6 sm:w-50vw lg:w-30rem"
         >
           <div className="flex flex-col items-center">
-            <h1 className="font-medium text-2xl text-slate-100 mb-6 align-baseline">
+            <h1 className="mb-6 align-baseline text-2xl font-medium text-slate-100">
               Sign up
             </h1>
           </div>
@@ -92,13 +92,13 @@ export default function Register() {
             label="CONFIRM PASSWORD"
             errors={errors.confirmPassword?.message}
           />
-          <div className="flex flex-row items-center justify-between mt-2">
+          <div className="mt-2 flex flex-row items-center justify-between">
             <div className="inline-flex flex-row">
-              <p className="font-normal text-sm text-slate-100">
+              <p className="text-sm font-normal text-slate-100">
                 Already have an account?{' '}
                 <Link
                   href="/login"
-                  className="font-normal text-sm text-orange-500 hover:underline focus:underline"
+                  className="text-sm font-normal text-orange-500 hover:underline focus:underline"
                 >
                   Login
                 </Link>

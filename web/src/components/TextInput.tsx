@@ -43,7 +43,7 @@ export default function TextInput() {
         onChange={handleChange}
         maxLength={300}
         placeholder="Digite sua mensagem..."
-        className="bg-zinc-700 w-80vw sm:w-50vw lg:w-33vw font-normal p-4 text-base text-slate-100 placeholder-gray-400 rounded-md resize-none focus:outline-none focus:ring-0 overflow-y-hidden whitespace-normal"
+        className="w-80vw resize-none overflow-y-hidden whitespace-normal rounded-md bg-zinc-700 p-4 text-base font-normal text-slate-100 placeholder-gray-400 focus:outline-none focus:ring-0 sm:w-50vw lg:w-33vw"
       />
       <SendButton isValid={!!inputValue} />
     </form>

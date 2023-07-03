@@ -10,17 +10,17 @@ export default function MessageBox({ children }: MessageBoxProps) {
     <div className="flex-col">
       <a
         href=""
-        className="flex items-center mb-1 gap-2 text-slate-300 text-sm font-normal"
+        className="mb-1 flex items-center gap-2 text-sm font-normal text-slate-300"
       >
         <Image
           src="/DefaultUserImg.svg"
-          className="rounded-full w-7"
+          className="w-7 rounded-full"
           alt="User profile picture"
         />
         UserName
       </a>
-      <div className="rounded-md bg-zinc-700 inline-block whitespace-normal p-4 w-80vw sm:w-50vw lg:w-33vw min-w-40">
-        <p className="text-slate-100 text-base font-normal">{children}</p>
+      <div className="inline-block w-80vw min-w-40 whitespace-normal rounded-md bg-zinc-700 p-4 sm:w-50vw lg:w-33vw">
+        <p className="text-base font-normal text-slate-100">{children}</p>
       </div>
     </div>
   )
