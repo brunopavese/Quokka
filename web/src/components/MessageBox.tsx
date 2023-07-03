@@ -16,6 +16,8 @@ export default function MessageBox({ children }: MessageBoxProps) {
           src="/DefaultUserImg.svg"
           className="w-7 rounded-full"
           alt="User profile picture"
+          width={28}
+          height={28}
         />
         UserName
       </a>
