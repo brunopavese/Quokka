@@ -1,16 +1,12 @@
-import { Router, Request, Response } from "express";
-import { User } from "@prisma/client";
-import { prisma } from "../lib/prisma";
+import { Router, Request, Response } from 'express';
+import { User } from '@prisma/client';
+import { prisma } from '../lib/prisma';
 
-const userClient = prisma.user
-export const router = Router();
+export const userRoutes = Router();
 
-router.get('/', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+userRoutes.get('/', async (req: Request, res: Response): Promise<void> => {
   try {
-    const allUsers: User[] = await userClient.findMany();
+    const allUsers: User[] = await prisma.user.findMany();
 
     res.status(200).json({ data: allUsers });
   } catch (error) {
@@ -18,12 +14,9 @@ router.get('/', async (
   }
 });
 
-router.get('/count', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+userRoutes.get('/count', async (req: Request, res: Response): Promise<void> => {
   try {
-    const count = await userClient.count();
+    const count = await prisma.user.count();
 
     res.status(201).json(count);
   } catch (error) {
@@ -31,13 +24,10 @@ router.get('/count', async (
   }
 });
 
-router.get('/:id', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+userRoutes.get('/:id', async (req: Request, res: Response): Promise<void> => {
   try {
     const userId = req.params.id;
-    const user = await userClient.findUnique({ where: { id: userId } });
+    const user = await prisma.user.findUnique({ where: { id: userId } });
 
     res.status(200).json({ data: user });
   } catch (error) {
@@ -45,13 +35,10 @@ router.get('/:id', async (
   }
 });
 
-router.post('/', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+userRoutes.post('/', async (req: Request, res: Response): Promise<void> => {
   try {
     const userData = req.body;
-    const user = await userClient.create({
+    const user = await prisma.user.create({
       data: { ...userData },
     });
 
@@ -61,14 +48,11 @@ router.post('/', async (
   }
 });
 
-router.put('/:id', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
+userRoutes.put('/:id', async (req: Request, res: Response): Promise<void> => {
   try {
     const userId = req.params.id;
     const userData = req.body;
-    const updatedUserData = await userClient.update({
+    const updatedUserData = await prisma.user.update({
       where: { id: userId },
       data: { ...userData },
     });
@@ -79,17 +63,16 @@ router.put('/:id', async (
   }
 });
 
-router.delete('/:id', async (
-  req: Request,
-  res: Response
-): Promise<void> => {
-  try {
-    const userId = req.params.id;
-    const userData = await userClient.delete({ where: { id: userId } });
+userRoutes.delete(
+  '/:id',
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = req.params.id;
+      const userData = await prisma.user.delete({ where: { id: userId } });
 
-    res.status(200).json({ data: {} });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
+      res.status(200).json({ data: {} });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
