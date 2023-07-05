@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FieldValues, useForm } from 'react-hook-form'
 
+import InputForm from 'components/InputForm'
 import SendButton from 'components/SendButton'
 import XClose from 'components/XClose'
 
@@ -44,47 +45,21 @@ export default function Login() {
             </h1>
           </div>
           {/* Email Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="email"
-              className="mb-2 text-sm font-semibold text-zinc-200"
-            >
-              EMAIL
-            </label>
-            <input
-              {...register('email')}
-              type="email"
-              className="inline-block max-w-full rounded-md bg-zinc-700 px-2 py-3 text-base font-normal text-slate-100 focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.email && (
-                <span className="text-xs font-medium text-red-400">
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('email')}
+            name="email"
+            type="email"
+            label="EMAIL"
+            errors={errors.email?.message}
+          />
           {/* Password Input */}
-          <div className="flex flex-col">
-            <label
-              htmlFor="password"
-              className="mb-2 text-sm font-semibold text-zinc-200"
-            >
-              PASSWORD
-            </label>
-            <input
-              {...register('password')}
-              type="password"
-              className="inline-block max-w-full rounded-md bg-zinc-700 px-2 py-3 text-base font-normal text-slate-100 focus:outline-none focus:ring-0"
-            />
-            <div className="flex h-6 items-center justify-end">
-              {errors.password && (
-                <span className="text-xs font-medium text-red-400">
-                  {errors.password.message}
-                </span>
-              )}
-            </div>
-          </div>
+          <InputForm
+            {...register('password')}
+            name="password"
+            type="password"
+            label="PASSWORD"
+            errors={errors.password?.message}
+          />
           <div className="mt-2 flex flex-row items-center justify-between">
             <div className="inline-flex flex-row">
               <p className="text-sm font-normal text-slate-100">
