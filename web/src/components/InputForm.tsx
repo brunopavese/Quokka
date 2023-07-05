@@ -23,7 +23,7 @@ const InputForm = forwardRef<HTMLInputElement, InputFormProps>(
           name={name}
           {...props}
           ref={ref}
-          className="inline-block max-w-full rounded-md bg-zinc-700 px-2 py-3 text-base font-normal text-slate-100 focus:outline-none focus:ring-0"
+          className="max-w-full inline-block rounded-md bg-zinc-700 px-2 py-3 text-base font-normal text-slate-100 focus:outline-none focus:ring-0"
         />
         <div className="flex h-6 items-center justify-end">
           {hasError && (

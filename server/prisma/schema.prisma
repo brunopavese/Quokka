@@ -22,10 +22,10 @@ model User {
 }
 
 model Message {
-  id          String   @id @default(cuid())
-  text        String
-  messengerId String
-  createdAt   DateTime @default(now())
+  id        String   @id @default(cuid())
+  text      String
+  userId    String
+  createdAt DateTime @default(now())
 
-  messeger User @relation(fields: [messengerId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 }

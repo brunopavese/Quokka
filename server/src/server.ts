@@ -1,37 +1,23 @@
 import express from 'express';
 
-import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
+import { prisma } from './lib/prisma';
+import { router as users} from './routes/users';
 
 require('dotenv').config();
 
 const port = process.env.PORT;
 
-const prisma = new PrismaClient({
-  log: ['query'],
-});
-
 async function bootstrap() {
   const app = express();
 
   app.use(express.json());
-
-  app.get('/user/count', async (req, res) => {
-    const count = await prisma.user.count();
-
-    res.json(count);
-  });
+  app.use('/users', users)
 
   app.get('/message/count', async (req, res) => {
     const count = await prisma.message.count();
 
     res.json(count);
-  });
-
-  app.get('/user', async (req, res) => {
-    const users = await prisma.user.findMany();
-
-    res.json(users);
   });
 
   app.post('/message', async (req, res) => {
