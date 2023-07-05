@@ -25,7 +25,7 @@ export default async function Home() {
 }
 
 export const getData = async () => {
-  const response = await fetch('http://localhost:3333/message/count', {
+  const response = await fetch('http://localhost:3333/users/count', {
     next: {
       revalidate: 30,
     },
