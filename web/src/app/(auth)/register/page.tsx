@@ -10,27 +10,32 @@ import XClose from 'components/XClose'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-const signUpUserFormSchema = z.object({
-  username: z
-    .string()
-    .nonempty('Username is required')
-    .regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,300}$/, 'Format invalid')
-    .min(3, 'Too short')
-    .max(30, 'Too long')
-    .toLowerCase(),
-  email: z
-    .string()
-    .nonempty('Email is required')
-    .email('Invalid format')
-    .toLowerCase(),
-  password: z
-    .string()
-    .nonempty('Password is required')
-    .min(6, 'Too short')
-    .regex(/^\S+$/, 'Cannot contain white spaces')
-    .trim(),
-  confirmPassword: z.string(),
-})
+const signUpUserFormSchema = z
+  .object({
+    username: z
+      .string()
+      .nonempty('Username is required')
+      .regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,300}$/, 'Format invalid')
+      .min(3, 'Too short')
+      .max(30, 'Too long')
+      .toLowerCase(),
+    email: z
+      .string()
+      .nonempty('Email is required')
+      .email('Invalid format')
+      .toLowerCase(),
+    password: z
+      .string()
+      .nonempty('Password is required')
+      .min(6, 'Too short')
+      .regex(/^\S+$/, 'Cannot contain white spaces')
+      .trim(),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  })
 
 type signUpUserFormData = z.infer<typeof signUpUserFormSchema>
 

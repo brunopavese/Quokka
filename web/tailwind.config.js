@@ -19,6 +19,13 @@ module.exports = {
     minWidth: {
       40: '10rem',
     },
+    maxWidth: {
+      '25vw': '25vw',
+      '33vw': '33vw',
+      '50vw': '50vw',
+      '80vw': '80vw',
+      '90vw': '90vw',
+    },
   },
   plugins: [],
 }

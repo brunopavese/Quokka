@@ -11,6 +11,7 @@ export default async function Home() {
       <Link href="/login" className="text-xl font-bold text-slate-100">
         ir para Login
       </Link>
+      <MessageBox userName="João">Lorem ipsum dolor sit amet</MessageBox>
       <MessageBox>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
         aliquam, felis quis consectetur efficitur, ipsum neque tincidunt neque,

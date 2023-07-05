@@ -3,9 +3,13 @@ import { ReactNode } from 'react'
 
 interface MessageBoxProps {
   children: ReactNode
+  userName?: string
 }
 
-export default function MessageBox({ children }: MessageBoxProps) {
+export default function MessageBox({
+  children,
+  userName = 'UserName',
+}: MessageBoxProps) {
   return (
     <div className="flex-col">
       <a
@@ -19,9 +23,9 @@ export default function MessageBox({ children }: MessageBoxProps) {
           width={28}
           height={28}
         />
-        UserName
+        {userName}
       </a>
-      <div className="inline-block w-80vw min-w-40 whitespace-normal rounded-md bg-zinc-700 p-4 sm:w-50vw lg:w-33vw">
+      <div className="inline-block w-auto min-w-40 max-w-80vw whitespace-normal rounded-md bg-zinc-700 p-4 sm:max-w-50vw lg:max-w-33vw">
         <p className="text-base font-normal text-slate-100">{children}</p>
       </div>
     </div>
