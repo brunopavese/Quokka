@@ -14,7 +14,7 @@ type MessageType = {
   createdAt: string
 }
 
-const Chat = () => {
+const ChatBox = () => {
   const [messages, setMessages] = useState<MessageType[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -44,8 +44,11 @@ const Chat = () => {
   }
 
   return (
-    <div className="flex h-auto" onScroll={handleScroll}>
-      <div className="flex h-auto flex-col">
+    <div className="flex h-full w-full justify-center overflow-y-auto pb-16">
+      <section
+        className="flex min-w-40 max-w-80vw flex-col justify-center self-center sm:max-w-50vw lg:max-w-33vw"
+        onScroll={handleScroll}
+      >
         {messages.map((message, index) => {
           return (
             <MessageBox key={index} userName={message.userId}>
@@ -53,10 +56,12 @@ const Chat = () => {
             </MessageBox>
           )
         })}
-        {isLoading && <div className="loading">Carregando mensagens...</div>}
-      </div>
+        {isLoading && (
+          <div className="flex w-full">Carregando mensagens...</div>
+        )}
+      </section>
     </div>
   )
 }
 
-export default Chat
+export default ChatBox

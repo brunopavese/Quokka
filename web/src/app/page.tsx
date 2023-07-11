@@ -1,27 +1,18 @@
-import Link from 'next/link'
-
-import Chat from 'components/Chat'
-import TextInput from 'components/TextInput'
+import ChatBox from 'components/ChatBox'
+import Footer from 'components/Footer'
 // import MessageBox from 'components/MessageBox'
 
 export default async function Home() {
-  const data = await getData()
+  // const data = await getData()
+
+  const handleSendMessage = () => {}
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-zinc-800 px-8 py-20 md:py-8">
-      <h1 className="text-2xl font-bold text-slate-100">Contagem:{data}</h1>
-      <Link href="/login" className="text-xl font-bold text-slate-100">
-        ir para Login
-      </Link>
-      <Chat />
-      {/* <MessageBox userName="João">Lorem ipsum dolor sit amet</MessageBox>
-      <MessageBox>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-        aliquam, felis quis consectetur efficitur, ipsum neque tincidunt neque,
-        eget bibendum mi risus in purus. Quisque eget scelerisque nibh. Fusce
-        nec tellus orci. Curabitur a ligula vel ex dapibus scelerisque. Proin
-        sapien ligula eleifend.
-      </MessageBox> */}
-      <TextInput />
+    <main className="flex h-0 min-h-screen flex-col bg-zinc-800 p-0">
+      {/* <h1 className="text-2xl font-bold text-slate-100">Contagem:{data}</h1> */}
+      {/* <div className="flex h-full flex-col items-center justify-between bg-zinc-800 px-8 py-20 md:py-8"> */}
+      <ChatBox />
+      {/* </div> */}
+      <Footer onSendMessage={handleSendMessage} />
     </main>
   )
 }
