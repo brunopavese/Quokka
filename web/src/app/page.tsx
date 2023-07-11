@@ -1,7 +1,8 @@
 import Link from 'next/link'
 
-import MessageBox from 'components/MessageBox'
+import Chat from 'components/Chat'
 import TextInput from 'components/TextInput'
+// import MessageBox from 'components/MessageBox'
 
 export default async function Home() {
   const data = await getData()
@@ -11,14 +12,15 @@ export default async function Home() {
       <Link href="/login" className="text-xl font-bold text-slate-100">
         ir para Login
       </Link>
-      <MessageBox userName="João">Lorem ipsum dolor sit amet</MessageBox>
+      <Chat />
+      {/* <MessageBox userName="João">Lorem ipsum dolor sit amet</MessageBox>
       <MessageBox>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
         aliquam, felis quis consectetur efficitur, ipsum neque tincidunt neque,
         eget bibendum mi risus in purus. Quisque eget scelerisque nibh. Fusce
         nec tellus orci. Curabitur a ligula vel ex dapibus scelerisque. Proin
         sapien ligula eleifend.
-      </MessageBox>
+      </MessageBox> */}
       <TextInput />
     </main>
   )

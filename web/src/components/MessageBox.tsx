@@ -3,7 +3,8 @@ import { ReactNode } from 'react'
 
 interface MessageBoxProps {
   children: ReactNode
-  userName?: string
+  userName?: string | Promise<any>
+  key?: number
 }
 
 export default function MessageBox({
@@ -11,7 +12,7 @@ export default function MessageBox({
   userName = 'UserName',
 }: MessageBoxProps) {
   return (
-    <div className="flex-col">
+    <div className="mb-5 flex-col">
       <a
         href=""
         className="mb-1 flex items-center gap-2 text-sm font-normal text-slate-300"
