@@ -16,7 +16,7 @@ async function bootstrap() {
 
   app.listen(process.env.PORT, () => {
     console.log(
-      `${process.env.APP_NAME} rodando em http://localhost:${process.env.PORT}`,
+      `🚀 ${process.env.APP_NAME} Server ready at: http://localhost:${process.env.PORT}`,
     );
   });
 }

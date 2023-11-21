@@ -12,12 +12,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  userName  String   @unique
-  email     String   @unique
-  googleId  String?  @unique
-  avatarUrl String?
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  userName    String   @unique
+  email       String   @unique
+  googleId    String?  @unique
+  avatarImage Bytes?
+  createdAt   DateTime @default(now())
 
   Messages Message[]
 }
