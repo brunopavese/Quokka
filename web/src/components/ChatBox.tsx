@@ -1,47 +1,54 @@
-'use client'
+'use client';
 
-import { useState, useEffect, UIEvent } from 'react'
-
-import axios from 'services/axios'
-// import UserService from 'services/UserService'
-
-import MessageBox from './MessageBox'
+import { useState, useEffect, UIEvent } from 'react';
+import axios from 'services/axios';
+import UserService from 'services/UserService';
+import MessageBox from './MessageBox';
+import { User } from 'utils/types';
 
 type MessageType = {
-  id: string
-  text: string
-  userId: string
-  createdAt: string
-}
+  id: string;
+  text: string;
+  userId: string;
+  createdAt: string;
+};
 
 const ChatBox = () => {
-  const [messages, setMessages] = useState<MessageType[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [userDatas, setUserDatas] = useState<User[]>([]);
 
   useEffect(() => {
     const loadMessages = async () => {
-      setIsLoading(true)
+      setIsLoading(true);
       try {
-        const response = await axios.get('/messages')
-        const loadedMessages: MessageType[] = response.data.data
-        setMessages((prevMessages) => [...prevMessages, ...loadedMessages])
-      } catch (error) {
-        console.log(error)
-      } finally {
-        setIsLoading(false)
-      }
-    }
+        const response = await axios.get('/messages');
+        const loadedMessages: MessageType[] = response.data.data;
+        setMessages((prevMessages) => [...prevMessages, ...loadedMessages]);
 
-    loadMessages()
-  }, [])
+        // Para cada mensagem, busca os dados do usuário
+        const userPromises = loadedMessages.map((message) =>
+          UserService.getUserById(message.userId)
+        );
+        const userDataArray = await Promise.all(userPromises);
+        setUserDatas((prevUserDatas) => [...prevUserDatas, ...userDataArray]);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadMessages();
+  }, []);
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
-    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget
+    const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
     if (scrollHeight - scrollTop === clientHeight) {
-      // Logic to load more messages when the user reaches the end of the page
-      // Call the loadMessages() function again or implement the appropriate logic
+      // Lógica para carregar mais mensagens quando o usuário chegar ao final da página
+      // Chame a função loadMessages() novamente ou implemente a lógica apropriada
     }
-  }
+  };
 
   return (
     <div className="flex h-full w-full justify-center overflow-y-auto pb-16">
@@ -50,18 +57,18 @@ const ChatBox = () => {
         onScroll={handleScroll}
       >
         {messages.map((message, index) => {
+          const userData = userDatas[index]; // Pega os dados do usuário correspondentes à mensagem
+          console.log(userData)
           return (
-            <MessageBox key={index} userName={message.userId}>
+            <MessageBox key={index} user={userData}>
               {message.text}
             </MessageBox>
-          )
+          );
         })}
-        {isLoading && (
-          <div className="flex w-full">Carregando mensagens...</div>
-        )}
+        {isLoading && <div className="flex w-full">Carregando mensagens...</div>}
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default ChatBox
+export default ChatBox;
