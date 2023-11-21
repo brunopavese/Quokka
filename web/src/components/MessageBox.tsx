@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import { User } from 'utils/types';
 import { ReactNode } from 'react'
+
 import getUserImageSrc from 'utils/getUserImageSrc'
+import { User } from 'utils/types'
 
 interface MessageBoxProps {
-  children: ReactNode;
-  user: User;
+  children: ReactNode
+  user: User
 }
 export default function MessageBox({ children, user }: MessageBoxProps) {
-  const imageUrl = getUserImageSrc(user);
-
+  const imageUrl = getUserImageSrc(user)
 
   return (
     <div className="mb-5">
